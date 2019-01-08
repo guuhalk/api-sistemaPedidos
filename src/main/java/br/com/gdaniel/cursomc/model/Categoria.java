@@ -1,4 +1,4 @@
-package br.com.gdaniel.cursomc.model;
+package br.com.gdaniel.cursomc.Model;
 
 import java.io.Serializable;
 
