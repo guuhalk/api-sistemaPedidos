@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 import br.com.gdaniel.cursomc.Model.Categoria;
 import br.com.gdaniel.cursomc.Services.CategoriaService;
 
@@ -20,7 +18,7 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?>  find(@PathVariable Integer id) {
+	public ResponseEntity<?>  find(@PathVariable Integer id){
 		
 		Categoria obj = service.buscar(id);
 		
