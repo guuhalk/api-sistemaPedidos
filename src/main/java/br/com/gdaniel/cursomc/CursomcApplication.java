@@ -39,6 +39,7 @@ public class CursomcApplication implements CommandLineRunner {
 	
 	
 	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
 	}
@@ -87,12 +88,10 @@ public class CursomcApplication implements CommandLineRunner {
 		cli1.getEnderecos().addAll(Arrays.asList(e1,e2));
 	
 		
+		clienteDao.saveAll(Arrays.asList(cli1));
 		enderecoDao.saveAll(Arrays.asList(e1,e2));
 		
-	
-	
-	
-	
+
 	}
 
 }
