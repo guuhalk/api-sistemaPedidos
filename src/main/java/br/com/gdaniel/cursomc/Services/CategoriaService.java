@@ -23,4 +23,9 @@ public class CategoriaService {
 		Categoria.class.getName()));
 	}
 	
+	public Categoria insert(Categoria obj) {	
+		obj.setId(null);
+		return em.save(obj);
+	}
+	
 }
