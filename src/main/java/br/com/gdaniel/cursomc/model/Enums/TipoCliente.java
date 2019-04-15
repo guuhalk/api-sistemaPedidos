@@ -2,6 +2,7 @@ package br.com.gdaniel.cursomc.Model.Enums;
 
 public enum TipoCliente {
 
+	PESSOADOENTE(4,"Pessoa Doente"),
 	PESSOAFISICA(1,"Pessoa Fisica"),
 	PESSOAJURIDICA(2,"Pessoa Juridica");
 	
@@ -15,6 +16,8 @@ public enum TipoCliente {
 	
 	public int getCod() {
 		return cod;
+		
+
 	}
 	
 	public String getDescricao() {
@@ -37,6 +40,6 @@ public enum TipoCliente {
 	}
 	
 	
-	
+
 	
 }

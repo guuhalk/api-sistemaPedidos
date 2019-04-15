@@ -13,6 +13,7 @@ import br.com.gdaniel.cursomc.Dao.CidadeDao;
 import br.com.gdaniel.cursomc.Dao.ClienteDao;
 import br.com.gdaniel.cursomc.Dao.EnderecoDao;
 import br.com.gdaniel.cursomc.Dao.EstadoDao;
+import br.com.gdaniel.cursomc.Dao.ItemPedidoDao;
 import br.com.gdaniel.cursomc.Dao.PagamentoDao;
 import br.com.gdaniel.cursomc.Dao.PedidoDao;
 import br.com.gdaniel.cursomc.Dao.ProdutoDao;
@@ -21,6 +22,7 @@ import br.com.gdaniel.cursomc.Model.Cidade;
 import br.com.gdaniel.cursomc.Model.Cliente;
 import br.com.gdaniel.cursomc.Model.Endereco;
 import br.com.gdaniel.cursomc.Model.Estado;
+import br.com.gdaniel.cursomc.Model.ItemPedido;
 import br.com.gdaniel.cursomc.Model.Pagamento;
 import br.com.gdaniel.cursomc.Model.PagamentoBoleto;
 import br.com.gdaniel.cursomc.Model.PagamentoCartao;
@@ -29,7 +31,7 @@ import br.com.gdaniel.cursomc.Model.Produto;
 import br.com.gdaniel.cursomc.Model.Enums.EstadoPagamento;
 import br.com.gdaniel.cursomc.Model.Enums.TipoCliente;
 
-@SpringBootApplication
+@SpringBootApplication 
 public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
@@ -48,6 +50,8 @@ public class CursomcApplication implements CommandLineRunner {
 	private PedidoDao pedidoDao;
 	@Autowired
 	private PagamentoDao pagamentoDao;
+	@Autowired
+	private ItemPedidoDao itemPedidoDao;
 	
 	
 	
@@ -119,6 +123,28 @@ public class CursomcApplication implements CommandLineRunner {
 		pedidoDao.saveAll(Arrays.asList(ped1,ped2));
 		pagamentoDao.saveAll(Arrays.asList(pagto1,pagto2));
 
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 20000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1,ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		
+		itemPedidoDao.saveAll(Arrays.asList(ip1,ip2,ip3));
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
