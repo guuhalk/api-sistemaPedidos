@@ -16,7 +16,7 @@ public class ClienteService {
 	private ClienteDao em;
 	
 	
-	public Cliente buscar(Integer id) {  
+	public Cliente find(Integer id) {  
 		Optional<Cliente> obj = em.findById(id);  
 		
 		return obj.orElseThrow(()-> new ExceptionsObjectNotFound("Objeto não encontrado! Id: " + id + ", Tipo: " + 

@@ -16,7 +16,7 @@ public class CategoriaService {
 	private CategoriaDao em;
 	
 	
-	public Categoria buscar(Integer id) {  
+	public Categoria find(Integer id) {  
 		Optional<Categoria> obj = em.findById(id);  
 		
 		return obj.orElseThrow(()-> new ExceptionsObjectNotFound("Objeto não encontrado! Id: " + id + ", Tipo: " + 
@@ -27,5 +27,11 @@ public class CategoriaService {
 		obj.setId(null);
 		return em.save(obj);
 	}
+	
+	public Categoria update(Categoria obj) {	
+		find(obj.getId());
+		return em.save(obj);
+	}
+	
 	
 }
