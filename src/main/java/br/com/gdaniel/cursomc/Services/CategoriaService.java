@@ -3,6 +3,7 @@ package br.com.gdaniel.cursomc.Services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.gdaniel.cursomc.Dao.CategoriaDao;
@@ -33,5 +34,18 @@ public class CategoriaService {
 		return em.save(obj);
 	}
 	
+	public void delete(Integer id) {
+		
+		find(id);
+		
+		try {
+			
+			em.deleteById(id);
+		
+		}catch (DataIntegrityViolationException e) {
+			throw new br.com.gdaniel.cursomc.Services.Exceptions.
+			DataIntegrityViolationException("Não é possivel excluir uma categoria que possui produtos");
+		}
+	}
 	
 }
