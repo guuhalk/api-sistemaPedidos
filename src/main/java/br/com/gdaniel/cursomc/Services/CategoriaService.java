@@ -1,5 +1,6 @@
 package br.com.gdaniel.cursomc.Services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,11 @@ public class CategoriaService {
 			throw new br.com.gdaniel.cursomc.Services.Exceptions.
 			DataIntegrityViolationException("Não é possivel excluir uma categoria que possui produtos");
 		}
+	}
+	
+	
+	public List<Categoria> findAll() {  
+		return em.findAll();  
 	}
 	
 }
